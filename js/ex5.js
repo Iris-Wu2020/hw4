@@ -1,22 +1,31 @@
 console.log("Wu's Output from hw4 Exercise 5");
 
-let word = prompt("Please enter a word:");
+let word = prompt("Please enter a word:")
 
-const isPalindrome = (s) => {
-    let left;
-    let right;
-    left = 0;;
-    right = s.length - 1;
-    while (left < right) {
-        if ((left < right) && (s.toLowerCase()[left] !== s.toLowerCase()[right])) {
-            return false
+function vowel_count(s) {
+    const length = s.length;   
+    let vowel_list = 'aeiouyAEIOUY';
+    let vCount = 0;
+    let isPalindrome = true;
+
+    for(i = 0; i < length; i++) {
+        if (vowel_list.indexOf(s[i]) !== -1) {
+            vCount++;
         }
-        right++;
-        left--;
+        if (isPalindrome && (i < (length / 2))) {
+            isPalindrome =  (s.toLowerCase()[i] === s.toLowerCase()[length - i - 1])
+        }
+    
     }
-    return true
-
+    if (isPalindrome) {
+        console.log(`${s} contains ${vCount} vowels and is a palindrome.`);
+    }
+    else {
+        console.log(`${s} contains ${vCount} vowels and is not a palindrom.`);
+    }
 }
+
+vowel_count(word)
 
 
 
